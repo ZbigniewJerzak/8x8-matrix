@@ -41,12 +41,16 @@ basic.showLeds(`
     `)
 basic.forever(function () {
     posx += 1
-    strip2.setMatrixColor(posx, posy, neopixel.colors(NeoPixelColors.Blue))
-    posy += 1
-    strip2.setMatrixColor(posx, posy, neopixel.colors(NeoPixelColors.Red))
-    if (posx == 8) {
+    basic.forever(function () {
+        strip2.setMatrixColor(posx, posy, neopixel.colors(NeoPixelColors.Blue))
+        posy += 1
+        strip2.setMatrixColor(posx, posy, neopixel.colors(NeoPixelColors.Red))
+        if (posy == 8) {
+            posy = 0
+        }
+    })
+if (posx == 8) {
         posx = 0
-        posy = 0
     }
     strip2.show()
 })
